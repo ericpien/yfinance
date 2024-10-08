@@ -9,3 +9,9 @@ frozendict>=2.3.4
 beautifulsoup4>=4.11.1
 html5lib>=1.1
 peewee>=3.16.2
+
+# Sphinx Documentation
+Sphinx==8.0.2
+pydata-sphinx-theme==0.15.4
+Jinja2==3.1.4
+sphinx-copybutton==0.5.2

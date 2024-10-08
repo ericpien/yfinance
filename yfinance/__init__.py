@@ -30,6 +30,9 @@ from .domain.industry import Industry
 from .screener.screener import Screener
 from .screener.screener_query import EquityQuery
 
+# documentation
+from .const import EQUITY_SCREENER_EQ_MAP, EQUITY_SCREENER_FIELDS
+
 __version__ = version.version
 __author__ = "Ran Aroussi"
 
