@@ -21,3 +21,4 @@ ENV/
 
 # Documentation
 /docs/build/
+!yfinance.css

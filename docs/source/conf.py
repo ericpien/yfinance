@@ -10,19 +10,20 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'yfinance'
-copyright = '2024, Ran Aroussi'
+project = 'yfinance - market data downloader'
+copyright = '2017-2019 Ran Aroussi'
 author = 'Ran Aroussi'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ['sphinx.ext.autodoc',
-              'sphinx.ext.napoleon']
+              'sphinx.ext.napoleon',
+              "sphinx.ext.githubpages"]
 
 templates_path = ['_templates']
 exclude_patterns = []
-
+autoclass_content = 'both'
 
 
 # -- Options for HTML output -------------------------------------------------
