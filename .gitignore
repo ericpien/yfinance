@@ -18,3 +18,8 @@ test.ipynb
 env/
 venv/
 ENV/
+
+# Documentation
+/docs/build/
+/docs/source/reference/api
+!yfinance.css

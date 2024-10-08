@@ -1,18 +1,56 @@
+from abc import ABC, abstractmethod
 import numbers
 from typing import List, Union, Dict, Set
 
 from yfinance.const import EQUITY_SCREENER_EQ_MAP, EQUITY_SCREENER_FIELDS
 from yfinance.exceptions import YFNotImplementedError
+from ..utils import dynamic_docstring, generate_list_table_from_dict
 
-class Query:
+class Query(ABC):
     def __init__(self, operator: str, operand: Union[numbers.Real, str, List['Query']]):
         self.operator = operator
         self.operands = operand
-    
+
+    @abstractmethod
     def to_dict(self) -> Dict:
         raise YFNotImplementedError('to_dict() needs to be implemented by children classes')
 
 class EquityQuery(Query):
+    """
+    The `EquityQuery` class filters stocks based on specific criteria such as region, sector, exchange, and peer group.
+
+    Example:
+        Screen for stocks where the end-of-day price is greater than 3.
+        
+        .. code-block:: python
+
+            gt = yf.EquityQuery('gt', ['eodprice', 3])
+
+        Screen for stocks where the average daily volume over the last 3 months is less than a very large number.
+
+        .. code-block:: python
+
+            lt = yf.EquityQuery('lt', ['avgdailyvol3m', 99999999999])
+
+        Screen for stocks where the intraday market cap is between 0 and 100 million.
+
+        .. code-block:: python
+
+            btwn = yf.EquityQuery('btwn', ['intradaymarketcap', 0, 100000000])
+
+        Screen for stocks in the Technology sector.
+
+        .. code-block:: python
+
+            eq = yf.EquityQuery('eq', ['sector', 'Technology'])
+
+        Combine queries using AND/OR.
+
+        .. code-block:: python
+
+            qt = yf.EquityQuery('and', [gt, lt])
+            qf = yf.EquityQuery('or', [qt, btwn, eq])
+    """
     def __init__(self, operator: str, operand: Union[numbers.Real, str, List['EquityQuery']]):
         operator = operator.upper()
 
@@ -36,9 +74,14 @@ class EquityQuery(Query):
         self.operands = operand
         self._valid_eq_map = EQUITY_SCREENER_EQ_MAP
         self._valid_fields = EQUITY_SCREENER_FIELDS
-        
+    
+    @dynamic_docstring({"valid_eq_map_doc": generate_list_table_from_dict(EQUITY_SCREENER_EQ_MAP)})
     @property
     def valid_eq_map(self) -> Dict:
+        """
+        Valid Equity Map
+        {valid_eq_map_doc}
+        """
         return self._valid_eq_map
 
     @property

@@ -4,11 +4,19 @@ from yfinance import utils
 from yfinance.data import YfData
 from yfinance.const import _BASE_URL_, PREDEFINED_SCREENER_BODY_MAP
 from .screener_query import Query
+from ..utils import dynamic_docstring, generate_list_table_from_dict_of_dict
 
 _SCREENER_URL_ = f"{_BASE_URL_}/v1/finance/screener"
 
 class Screener:
     def __init__(self, session=None, proxy=None):
+        """
+        Initializes the Screener object.
+
+        Args:
+            session (requests.Session, optional): A requests session object to be used for making HTTP requests. Defaults to None.
+            proxy (str, optional): A proxy URL to be used for making HTTP requests. Defaults to None.
+        """
         self.proxy = proxy
         self.session = session
 
@@ -25,17 +33,41 @@ class Screener:
     
     @property
     def response(self) -> Dict:
+        """
+        Fetch screen result
+
+        Example:
+
+            .. code-block:: python
+
+                result = screener.response
+                symbols = [quote['symbol'] for quote in result['quotes']]
+        """
         if self._body_updated or self._response is None:
             self._fetch_and_parse()
         
         self._body_updated = False
         return self._response
     
+    @dynamic_docstring({"predefined_screeners": generate_list_table_from_dict_of_dict(PREDEFINED_SCREENER_BODY_MAP,bullets=False)})
     @property
     def predefined_bodies(self) -> Dict:
+        """
+        Predefined Screeners
+        {predefined_screeners}
+        """
         return self._predefined_bodies
 
     def set_default_body(self, query: Query, offset: int = 0, size: int = 100, sortField: str = "ticker", sortType: str = "desc", quoteType: str = "equity", userId: str = "", userIdType: str = "guid") -> None:
+        """
+        Set the default body using a custom query
+
+        Example:
+
+            .. code-block:: python
+
+                screener.set_default_body(qf)
+        """
         self._body_updated = True
 
         self._body = {
@@ -50,6 +82,15 @@ class Screener:
         }
 
     def set_predefined_body(self, k: str) -> None:
+        """
+        Set a predefined body
+
+        Example:
+
+            .. code-block:: python
+
+                screener.set_predefined_body('day_gainers')
+        """
         body = PREDEFINED_SCREENER_BODY_MAP.get(k, None)
         if not body:
             raise ValueError(f'Invalid key {k} provided for predefined screener')
@@ -58,6 +99,24 @@ class Screener:
         self._body = body
 
     def set_body(self, body: Dict) -> None:
+        """
+        Set the fully custom body 
+        
+        Example:
+
+            .. code-block:: python
+
+                screener.set_body({
+                    "offset": 0,
+                    "size": 100,
+                    "sortField": "ticker",
+                    "sortType": "desc",
+                    "quoteType": "equity",
+                    "query": qf.to_dict(),
+                    "userId": "",
+                    "userIdType": "guid"
+                })
+        """
         missing_keys = [key for key in self._accepted_body_keys if key not in body]
         if missing_keys:
             raise ValueError(f"Missing required keys in body: {missing_keys}")
@@ -71,6 +130,15 @@ class Screener:
 
 
     def patch_body(self, values: Dict) -> None:
+        """
+        Patch parts of the body
+
+        Example:
+
+            .. code-block:: python
+
+                screener.patch_body({"offset": 100})
+        """
         extra_keys = [key for key in values if key not in self._accepted_body_keys]
         if extra_keys:
             raise ValueError(f"Body contains extra keys: {extra_keys}")
