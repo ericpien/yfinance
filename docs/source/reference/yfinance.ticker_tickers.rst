@@ -35,7 +35,6 @@ TickerBase Abstract Class
 .. autoclass:: yfinance.base.TickerBase
    :members: 
    :undoc-members:
-   :show-inheritance:
 
 Sample Code
 ------------------

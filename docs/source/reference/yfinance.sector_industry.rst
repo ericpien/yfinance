@@ -35,7 +35,6 @@ Domain Abstract Class
 .. autoclass:: yfinance.domain.domain.Domain
    :members:
    :undoc-members:
-   :show-inheritance:
 
 
 Sample Code

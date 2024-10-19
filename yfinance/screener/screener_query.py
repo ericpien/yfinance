@@ -1,14 +1,24 @@
+from abc import ABC, abstractmethod
 import numbers
 from typing import List, Union, Dict, Set
 
 from yfinance.const import EQUITY_SCREENER_EQ_MAP, EQUITY_SCREENER_FIELDS
 from yfinance.exceptions import YFNotImplementedError
 
-class Query:
+class Query(ABC):
     def __init__(self, operator: str, operand: Union[numbers.Real, str, List['Query']]):
         self.operator = operator
         self.operands = operand
     
+    @property
+    def operator(self) -> str:
+        self.operator
+
+    @property
+    def operands(self) -> Union[numbers.Real, str, List['Query']]:
+        self.operands
+
+    @abstractmethod
     def to_dict(self) -> Dict:
         raise YFNotImplementedError('to_dict() needs to be implemented by children classes')
 

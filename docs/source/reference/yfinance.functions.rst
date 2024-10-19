@@ -16,7 +16,16 @@ Download Market Data
 
 The `download` function allows you to retrieve market data for multiple tickers at once.
 
+Query Market Data
+~~~~~~~~~~~~~~~~~~~~~
+.. autoclass:: yfinance.EquityQuery
+   :members: operator, operands
+   :undoc-members:
+   :show-inheritance:
 
+.. autoclass:: yfinance.Screener
+   :members:
+   :undoc-members:
 
 Utilities
 ---------

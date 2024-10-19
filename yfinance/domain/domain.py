@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from ..ticker import Ticker
 from ..const import _QUERY1_URL_
 from ..data import YfData
@@ -7,7 +8,7 @@ import pandas as _pd
 
 _QUERY_URL_ = f'{_QUERY1_URL_}/v1/finance'
 
-class Domain:
+class Domain(ABC):
     def __init__(self, key: str, session=None, proxy=None):
         self._key: str = key
         self.proxy = proxy
@@ -89,6 +90,7 @@ class Domain:
         
         return _pd.DataFrame(top_companies_values, columns = top_companies_column).set_index('symbol')
 
+    @abstractmethod
     def _fetch_and_parse(self) -> None:
         raise NotImplementedError("_fetch_and_parse() needs to be implemented by children classes")
 
