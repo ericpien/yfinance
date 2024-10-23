@@ -1,0 +1,31 @@
+﻿yfinance.EquityQuery
+====================
+
+.. currentmodule:: yfinance
+
+.. autoclass:: EquityQuery
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: attributes
+   
+      ~EquityQuery.valid_eq_map
+      ~EquityQuery.valid_fields
+   
+   
+
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: methods
+   
+      ~EquityQuery.__init__
+      ~EquityQuery.to_dict
+   
+   

@@ -1,0 +1,6 @@
+yfinance.EquityQuery.valid\_eq\_map
+===================================
+
+.. currentmodule:: yfinance
+
+.. autoproperty:: EquityQuery.valid_eq_map
