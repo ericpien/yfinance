@@ -32,11 +32,18 @@ jobs:
       run: |
         ls -l -R doc/_build/html
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: documentation_generated
-        publish_dir: doc/_build/html
-        destination_dir: docs
-        enable_jekyll: false
+    - name: Deploy to dev-documented branch
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        
+        git checkout dev-documented
+
+        mkdir -p docs
+        rm -rf docs/*
+        cp -r doc/_build/html/* docs/
+        touch docs/.nojekyll
+
+        git add docs
+        git commit -m "Update documentation"
+        git push origin dev-documented
