@@ -3,11 +3,15 @@ name: Build and Deploy Sphinx Docs
 on:
   push:
     branches:
-      - dev-documented
+      - docs_markdown
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BUILD_DIR: "doc/_build/html"
+      DEPLOY_BRANCH: "docs_markdown"
+      DEPLOY_DIR: "docs"
 
     steps:
     - name: Check out the repository
@@ -26,17 +30,24 @@ jobs:
 
     - name: Build Sphinx documentation
       run: |
-        sphinx-build -b html doc/source doc/_build/html -v
+        sphinx-build -b html doc/source ${{ env.BUILD_DIR }} -v
 
     - name: List generated HTML files
       run: |
-        ls -l -R doc/_build/html
+        ls -l -R ${{ env.BUILD_DIR }}
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: documentation
-        publish_dir: doc/_build/html
-        destination_dir: docs
-        enable_jekyll: false
+    - name: Publish to the Deploy Branch
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        
+        git checkout ${{ env.DEPLOY_BRANCH }}
+
+        mkdir -p ${{ env.DEPLOY_DIR }}
+        rm -rf ${{ env.DEPLOY_DIR }}/*
+        cp -r ${{ env.BUILD_DIR }}/* ${{ env.DEPLOY_DIR }}/
+        touch ${{ env.DEPLOY_DIR }}/.nojekyll
+        
+        git add -f ${{ env.DEPLOY_DIR }}
+        git commit -m "Update documentation"
+        git push origin ${{ env.DEPLOY_BRANCH }}
