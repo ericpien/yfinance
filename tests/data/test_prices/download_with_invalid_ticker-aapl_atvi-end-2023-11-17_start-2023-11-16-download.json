@@ -1,0 +1,98 @@
+{
+    "chart": {
+        "result": [
+            {
+                "meta": {
+                    "currency": "USD",
+                    "symbol": "AAPL",
+                    "exchangeName": "NMS",
+                    "fullExchangeName": "NasdaqGS",
+                    "instrumentType": "EQUITY",
+                    "firstTradeDate": 345479400,
+                    "regularMarketTime": 1732130090,
+                    "hasPrePostMarketData": true,
+                    "gmtoffset": -18000,
+                    "timezone": "EST",
+                    "exchangeTimezoneName": "America/New_York",
+                    "regularMarketPrice": 226.74,
+                    "fiftyTwoWeekHigh": 237.49,
+                    "fiftyTwoWeekLow": 164.08,
+                    "regularMarketDayHigh": 229.93,
+                    "regularMarketDayLow": 225.89,
+                    "regularMarketVolume": 16771030,
+                    "longName": "Apple Inc.",
+                    "shortName": "Apple Inc.",
+                    "chartPreviousClose": 188.01,
+                    "priceHint": 2,
+                    "currentTradingPeriod": {
+                        "pre": {
+                            "timezone": "EST",
+                            "end": 1732113000,
+                            "start": 1732093200,
+                            "gmtoffset": -18000
+                        },
+                        "regular": {
+                            "timezone": "EST",
+                            "end": 1732136400,
+                            "start": 1732113000,
+                            "gmtoffset": -18000
+                        },
+                        "post": {
+                            "timezone": "EST",
+                            "end": 1732150800,
+                            "start": 1732136400,
+                            "gmtoffset": -18000
+                        }
+                    },
+                    "dataGranularity": "1d",
+                    "range": "",
+                    "validRanges": [
+                        "1d",
+                        "5d",
+                        "1mo",
+                        "3mo",
+                        "6mo",
+                        "1y",
+                        "2y",
+                        "5y",
+                        "10y",
+                        "ytd",
+                        "max"
+                    ]
+                },
+                "timestamp": [
+                    1700145000
+                ],
+                "indicators": {
+                    "quote": [
+                        {
+                            "close": [
+                                189.7100067138672
+                            ],
+                            "volume": [
+                                54412900
+                            ],
+                            "open": [
+                                189.57000732421875
+                            ],
+                            "low": [
+                                188.64999389648438
+                            ],
+                            "high": [
+                                190.9600067138672
+                            ]
+                        }
+                    ],
+                    "adjclose": [
+                        {
+                            "adjclose": [
+                                188.78515625
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "error": null
+    }
+}

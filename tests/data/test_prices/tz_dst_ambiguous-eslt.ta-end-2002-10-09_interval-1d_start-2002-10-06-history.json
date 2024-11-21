@@ -1,0 +1,112 @@
+{
+    "chart": {
+        "result": [
+            {
+                "meta": {
+                    "currency": "ILA",
+                    "symbol": "ESLT.TA",
+                    "exchangeName": "TLV",
+                    "fullExchangeName": "Tel Aviv",
+                    "instrumentType": "EQUITY",
+                    "firstTradeDate": 1029133800,
+                    "regularMarketTime": 1732116245,
+                    "hasPrePostMarketData": false,
+                    "gmtoffset": 7200,
+                    "timezone": "IST",
+                    "exchangeTimezoneName": "Asia/Jerusalem",
+                    "regularMarketPrice": 93590.0,
+                    "fiftyTwoWeekHigh": 94350.0,
+                    "fiftyTwoWeekLow": 65380.0,
+                    "regularMarketDayHigh": 94150.0,
+                    "regularMarketDayLow": 92300.0,
+                    "regularMarketVolume": 87604,
+                    "longName": "Elbit Systems Ltd.",
+                    "shortName": "ELBIT SYSTEMS LTD",
+                    "chartPreviousClose": 7630.0,
+                    "priceHint": 2,
+                    "currentTradingPeriod": {
+                        "pre": {
+                            "timezone": "IST",
+                            "end": 1732087800,
+                            "start": 1732087800,
+                            "gmtoffset": 7200
+                        },
+                        "regular": {
+                            "timezone": "IST",
+                            "end": 1732116900,
+                            "start": 1732087800,
+                            "gmtoffset": 7200
+                        },
+                        "post": {
+                            "timezone": "IST",
+                            "end": 1732116900,
+                            "start": 1732116900,
+                            "gmtoffset": 7200
+                        }
+                    },
+                    "dataGranularity": "1d",
+                    "range": "",
+                    "validRanges": [
+                        "1d",
+                        "5d",
+                        "1mo",
+                        "3mo",
+                        "6mo",
+                        "1y",
+                        "2y",
+                        "5y",
+                        "10y",
+                        "ytd",
+                        "max"
+                    ]
+                },
+                "timestamp": [
+                    1033885800,
+                    1033975800,
+                    1034062200
+                ],
+                "indicators": {
+                    "quote": [
+                        {
+                            "close": [
+                                7470.0,
+                                7460.0,
+                                7470.0
+                            ],
+                            "volume": [
+                                19200,
+                                33200,
+                                19200
+                            ],
+                            "open": [
+                                7570.0,
+                                7400.0,
+                                7530.0
+                            ],
+                            "low": [
+                                7420.0,
+                                7330.0,
+                                7440.0
+                            ],
+                            "high": [
+                                7610.0,
+                                7540.0,
+                                7530.0
+                            ]
+                        }
+                    ],
+                    "adjclose": [
+                        {
+                            "adjclose": [
+                                5734.6142578125,
+                                5726.93798828125,
+                                5734.6142578125
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "error": null
+    }
+}
